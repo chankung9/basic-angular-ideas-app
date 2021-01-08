@@ -4,6 +4,6 @@ export interface User {
   id: string;
   username: string;
   created: Date;
-  token?: string;
+  token?: string | null;
   bookmarks?: Idea;
 }

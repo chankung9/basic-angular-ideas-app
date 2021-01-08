@@ -10,19 +10,23 @@ import { createReducer, on } from '@ngrx/store';
 
 export interface AuthState {
   user: User | null;
+  loading: boolean;
+  loaded: boolean;
 }
 
 const initialState: AuthState = {
-  user: null
+  user: null,
+  loading: false,
+  loaded: false
 };
 
 const _authReducer = createReducer(
   initialState,
-  // on(LoginUser, (state, payload) => ({ ...state, user: payload })),
-  // on(RegisterUser, (state, payload) => ({ ...state, user: payload })),
-  // on(SetInitialUser, (state) => ({ ...state })),
+  on(LoginUser, (state, payload) => ({ ...state, loading: true, loaded: false })),
+  on(RegisterUser, (state, payload) => ({ ...state, loading: true, loaded: false })),
+  on(SetInitialUser, (state) => ({ ...state })),
   on(SetCurrentUser, (state, payload) => {
-    return { ...state, user: payload };
+    return { ...state, user: payload, loading: true, loaded: false };
   }),
 );
 

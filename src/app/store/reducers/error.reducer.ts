@@ -12,7 +12,7 @@ const initialState: ErrorState = {
 const _errorReducer = createReducer(
   initialState,
   on(AddError, (state, payload) => ({ ...state, error: payload })),
-  on(RemoveError, (state) => ({ ...state })),
+  on(RemoveError, (state) => ({ ...state, error: null })),
 );
 
 export function errorReducer(state: any, action: any) {

@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { AuthDTO, AuthType } from '@app/models/auth';
 import { User } from '@app/models/user';
 import { environment } from '@env/environment';
-import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   private auth(authType: AuthType, data: AuthDTO) {
-    return this.http.post<User>(`${this.api}/${authType}`, data);
+    return this.http.post<User>(`${this.api}/${authType}`, data).pipe(
+      mergeMap((user: User) => {
+        this.token = user.token;
+        return of(user);
+      })
+    );
   }
 
   whoami() {
@@ -31,11 +37,11 @@ export class AuthService {
     return this.auth('login', data);
   }
 
-  get token(): string | null {
+  get token(): string | null | undefined {
     return localStorage.getItem('idea_token');
   }
 
-  set token(val: string | null) {
+  set token(val: string | null | undefined) {
     if (val) {
       localStorage.setItem('idea_token', val);
     } else {
