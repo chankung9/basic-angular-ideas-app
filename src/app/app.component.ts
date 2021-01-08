@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '@app/store';
+import { AddError } from './store/error.actions';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ideas-app';
+  constructor(private store: Store<AppState>) { }
+
+  ngOnInit(): void {
+    this.store.dispatch(AddError({ error: 'message' }))
+  }
 }
