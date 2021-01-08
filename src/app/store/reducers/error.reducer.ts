@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { AddError, RemoveError } from '@app/store/error.actions';
+import { AddError, RemoveError } from '@app/store/actions/error.action';
 
 export interface ErrorState {
   error: any;
@@ -11,10 +11,7 @@ const initialState: ErrorState = {
 
 const _errorReducer = createReducer(
   initialState,
-  on(AddError, (state, payload) => {
-    console.log(state)
-    return { ...state, error: payload }
-  }),
+  on(AddError, (state, payload) => ({ ...state, error: payload })),
   on(RemoveError, (state) => ({ ...state })),
 );
 

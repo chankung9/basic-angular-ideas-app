@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthDTO, AuthType } from '@app/models/auth';
+import { User } from '@app/models/user';
 import { environment } from '@env/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,13 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   private auth(authType: AuthType, data: AuthDTO) {
-    return this.http.post(`${this.api}/${authType}`, data);
+    return this.http.post<User>(`${this.api}/${authType}`, data);
+  }
+
+  whoami() {
+    return this.http.get<User>(`${this.api}/whoami`, {
+      headers: { authorization: `Bearer ${this.token}` }
+    });
   }
 
   register(data: AuthDTO) {
