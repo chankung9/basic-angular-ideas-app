@@ -5,5 +5,6 @@ export interface User {
   username: string;
   created: Date;
   token?: string | null;
-  bookmarks?: Idea;
+  ideas?: Idea[];
+  bookmarks?: Idea[];
 }
