@@ -24,7 +24,7 @@ export class AuthEffects {
     mergeMap(() => this.authService.whoami()
       .pipe(
         map((user: User) => SetCurrentUser(user)),
-        catchError(err => of(err))
+        catchError(err => of(AddError({ error: err.error })))
       ))
   ));
 
@@ -34,7 +34,7 @@ export class AuthEffects {
     mergeMap((data: AuthDTO) => this.authService.login(data)
       .pipe(
         map((user: User) => SetCurrentUser(user)),
-        catchError(error => of(AddError({ error })))
+        catchError(err => of(AddError({ error: err.error })))
       ))
   ));
 
@@ -44,7 +44,7 @@ export class AuthEffects {
     mergeMap((data: AuthDTO) => this.authService.register(data)
       .pipe(
         map((user: User) => SetCurrentUser(user)),
-        catchError(error => of(AddError({ error })))
+        catchError(err => of(AddError({ error: err.error })))
       ))
   ));
 }
