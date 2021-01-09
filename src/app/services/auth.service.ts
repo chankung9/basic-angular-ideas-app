@@ -34,6 +34,7 @@ export class AuthService {
   }
 
   login(data: AuthDTO) {
+    console.log(data);
     return this.auth('login', data);
   }
 

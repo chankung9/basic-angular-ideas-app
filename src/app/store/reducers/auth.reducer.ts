@@ -25,8 +25,8 @@ const _authReducer = createReducer(
   on(LoginUser, (state, payload) => ({ ...state, loading: true, loaded: false })),
   on(RegisterUser, (state, payload) => ({ ...state, loading: true, loaded: false })),
   on(SetInitialUser, (state) => ({ ...state })),
-  on(SetCurrentUser, (state, payload) => {
-    return { ...state, user: payload, loading: false, loaded: true };
+  on(SetCurrentUser, (state, { user }) => {
+    return { ...state, user, loading: false, loaded: true };
   }),
 );
 

@@ -11,12 +11,12 @@ export enum AuthActionTypes {
 }
 
 export const LoginUser = createAction(AuthActionTypes.LOGIN_USER,
-  props<AuthDTO>());
+  props<{ user: AuthDTO }>());
 
 export const RegisterUser = createAction(AuthActionTypes.REGISTER_USER,
-  props<AuthDTO>());
+  props<{ user: AuthDTO }>());
 
 export const SetInitialUser = createAction(AuthActionTypes.SET_INITIAL_USER);
 
 export const SetCurrentUser = createAction(AuthActionTypes.SET_CURRENT_USER,
-  props<User>());
+  props<{ user: User | null }>());

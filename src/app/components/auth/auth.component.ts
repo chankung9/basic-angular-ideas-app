@@ -24,11 +24,11 @@ export class AuthComponent implements OnInit {
 
   login() {
     const val = this.authForm.getRawValue() as AuthDTO;
-    this.store.dispatch(LoginUser(val));
+    this.store.dispatch(LoginUser({user: val}));
   }
 
   register() {
     const val = this.authForm.getRawValue() as AuthDTO;
-    this.store.dispatch(RegisterUser(val));
+    this.store.dispatch(RegisterUser({user: val}));
   }
 }

@@ -6,6 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [],
@@ -14,12 +15,14 @@ import { MessageService } from 'primeng/api';
     CommonModule,
     CardModule,
     InputTextModule,
+    MenubarModule,
     ToastModule,
   ],
   exports: [
     ButtonModule,
     CardModule,
     InputTextModule,
+    MenubarModule,
     ToastModule,
   ],
   providers: [
