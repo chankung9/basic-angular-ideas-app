@@ -11,4 +11,12 @@ export const selectAllIdeas = createSelector(
     const { ideas }: { ideas: Entity<Idea> } = ideaState;
     return Object.keys(ideas).map(id => ideas[id]);
   }
+
+  );
+export const selectCurrentIdea = createSelector(
+  selectIdeaState,
+  (ideaState: IdeaState) => {
+    const { ideas, selectedIdea } = ideaState;
+    return ideas[selectedIdea];
+  }
 );

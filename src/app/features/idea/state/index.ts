@@ -6,6 +6,7 @@ export interface IdeaState {
   ideas: Entity<Idea>;
   loading: boolean;
   loaded: boolean;
+  selectedIdea: string;
 }
 
 export interface AppState extends Store.AppState {

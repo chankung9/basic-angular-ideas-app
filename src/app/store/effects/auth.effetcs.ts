@@ -23,8 +23,11 @@ export class AuthEffects {
     tap(() => this.store.dispatch(RemoveError())),
     mergeMap(() => this.authService.whoami()
       .pipe(
-        map((user: User) => SetCurrentUser({ user })),
-        catchError(err => of(AddError({ error: err.error })))
+        map(user => SetCurrentUser({ user })),
+        catchError(err => {
+          this.authService.token = null;
+          return of(AddError({ error: err.error }));
+        })
       ))
   ));
 
@@ -33,8 +36,11 @@ export class AuthEffects {
     tap(() => this.store.dispatch(RemoveError())),
     mergeMap(({ user }) => this.authService.login(user)
       .pipe(
-        map((user: User) => SetCurrentUser({ user })),
-        catchError(err => of(AddError({ error: err.error })))
+        map(user => SetCurrentUser({ user })),
+        catchError(err => {
+          this.authService.token = null;
+          return of(AddError({ error: err.error }));
+        })
       ))
   ));
 
@@ -43,8 +49,11 @@ export class AuthEffects {
     tap(() => this.store.dispatch(RemoveError())),
     mergeMap(({ user }) => this.authService.register(user)
       .pipe(
-        map((user: User) => SetCurrentUser({ user })),
-        catchError(err => of(AddError({ error: err.error })))
+        map(user => SetCurrentUser({ user })),
+        catchError(err => {
+          this.authService.token = null;
+          return of(AddError({ error: err.error }));
+        })
       ))
   ));
 }
