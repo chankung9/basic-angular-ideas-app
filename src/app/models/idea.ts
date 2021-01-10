@@ -7,8 +7,9 @@ export interface Idea {
   idea: string;
   description: string;
   author: User;
-  upvotes?: number;
-  downvotes?: number;
+  upvotes: number;
+  downvotes: number;
+  comments?: Comment[];
 }
 
 export interface IdeaDTO {

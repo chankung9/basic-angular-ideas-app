@@ -2,12 +2,6 @@ import { createReducer, on } from '@ngrx/store';
 import { UserState } from '.';
 import { LoadUsers, LoadUsersSuccess } from './user.action';
 
-// export interface AuthState {
-//   user: User | null;
-//   loading: boolean;
-//   loaded: boolean;
-// }
-
 const initialState: UserState = {
   users: [],
   loading: false,

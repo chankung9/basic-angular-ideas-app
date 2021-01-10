@@ -21,9 +21,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     EffectsModule.forFeature([UserEffects]),
     StoreModule.forFeature('users', userReducer),
-    // StoreRouterConnectingModule.forRoot({
-    //   serializer: CustomSerializer
-    // })
   ]
 })
 export class UserModule { }

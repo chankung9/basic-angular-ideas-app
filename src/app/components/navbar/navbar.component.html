@@ -2,7 +2,7 @@
   <button
     pButton
     icon="fa fa-sign-out"
-    [label]="token ? 'Logout':'Login'"
+    [label]="(token) ? 'Logout':'Login'"
     (click)="handleClick()"
   ></button>
 </p-menubar>

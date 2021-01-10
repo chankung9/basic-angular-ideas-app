@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(
       SetInitialUser()
     );
-    this.store.select(state => state.error)
+    this.store.select((state: AppState) => state.error)
       .subscribe(val => this.showError(val.error));
   }
 
