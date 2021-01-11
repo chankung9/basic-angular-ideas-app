@@ -12,6 +12,8 @@ export enum IdeaActions {
   UPDATE_IDEA_SUCCESS = '[Idea] Update idea success',
   DELETE_IDEA = '[Idea] Delete idea',
   DELETE_IDEA_SUCCESS = '[Idea] Delete idea success',
+  UPVOTE_IDEA = '[Idea] Upvote idea',
+  DOWNVOTE_IDEA = '[Idea] Downvote idea'
 }
 
 export const LoadIdea = createAction(IdeaActions.LOAD_IDEA,
@@ -35,4 +37,9 @@ export const UpdateIdeaSuccess = createAction(IdeaActions.UPDATE_IDEA_SUCCESS,
 export const DeleteIdea = createAction(IdeaActions.DELETE_IDEA,
   props<{ idea: string }>());
 export const DeleteIdeaSuccess = createAction(IdeaActions.DELETE_IDEA_SUCCESS,
+  props<{ idea: string }>());
+
+export const UpvoteIdea = createAction(IdeaActions.UPVOTE_IDEA,
+  props<{ idea: string }>());
+export const DownvoteIdea = createAction(IdeaActions.DOWNVOTE_IDEA,
   props<{ idea: string }>());

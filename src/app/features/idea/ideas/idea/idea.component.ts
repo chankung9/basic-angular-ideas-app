@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Idea } from '@app/models/idea';
 
 @Component({
@@ -6,14 +6,19 @@ import { Idea } from '@app/models/idea';
   templateUrl: './idea.component.html',
   styleUrls: ['./idea.component.scss']
 })
-export class IdeaComponent implements OnInit {
-
+export class IdeaComponent {
   @Input()
   idea!: Idea;
+  @Input()
+  displayOptions = false;
 
-  constructor() { }
+  @Output()
+  onDelete = new EventEmitter();
+  @Output()
+  onUpvote = new EventEmitter();
+  @Output()
+  onDownvote = new EventEmitter();
 
-  ngOnInit(): void {
-  }
+  votes = 0;
 
 }

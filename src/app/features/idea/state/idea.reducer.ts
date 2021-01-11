@@ -16,6 +16,8 @@ const _ideaReducer = createReducer(
   on(IdeaActions.CreateIdea, (state) => ({ ...state, loaded: false, loading: true })),
   on(IdeaActions.UpdateIdea, (state) => ({ ...state, loaded: false, loading: true })),
   on(IdeaActions.DeleteIdea, (state) => ({ ...state, loaded: false, loading: true })),
+  on(IdeaActions.UpvoteIdea, (state) => ({ ...state, loaded: false, loading: true })),
+  on(IdeaActions.DownvoteIdea, (state) => ({ ...state, loaded: false, loading: true })),
   on(IdeaActions.LoadIdeaSuccess, (state, payload) => {
     const ideas = payload.idea
       ? { ...state.ideas, [payload.idea.id]: payload.idea }

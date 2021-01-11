@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
 import { AuthDTO, AuthType } from '@app/models/auth';
 import { User } from '@app/models/user';
 import { environment } from '@env/environment';
@@ -9,7 +10,7 @@ import { mergeMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements CanActivate {
   private api: string = environment.api_server + '/auth';
 
   constructor(private http: HttpClient) { }
@@ -47,5 +48,12 @@ export class AuthService {
     } else {
       localStorage.clear();
     }
+  }
+
+  canActivate() {
+    if (this.token) {
+      return true;
+    }
+    return false;
   }
 }

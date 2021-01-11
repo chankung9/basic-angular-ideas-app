@@ -12,7 +12,13 @@ export const selectAllIdeas = createSelector(
     return Object.keys(ideas).map(id => ideas[id]);
   }
 
-  );
+);
+
+export const selectIdeaLoader = createSelector(
+  selectIdeaState,
+  (ideaState: IdeaState) => ideaState.loading
+);
+
 export const selectCurrentIdea = createSelector(
   selectIdeaState,
   (ideaState: IdeaState) => {

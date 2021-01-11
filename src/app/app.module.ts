@@ -13,6 +13,7 @@ import { AppStoreModule } from '@app/store/app-store.module';
 import { AuthComponent } from '@app/components/auth/auth.component';
 import { UIModule } from '@app/ui.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UUIDGuard } from './services/uuid.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     UIModule,
     StoreDevtoolsModule.instrument()
   ],
-  providers: [AuthService, ApiService],
+  providers: [AuthService, ApiService, UUIDGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

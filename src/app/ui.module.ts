@@ -7,9 +7,11 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
+import { IdeaEditableComponent } from './components/idea-editable/idea-editable.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [],
+  declarations: [IdeaEditableComponent],
   imports: [
     ButtonModule,
     CommonModule,
@@ -17,6 +19,7 @@ import { MenubarModule } from 'primeng/menubar';
     InputTextModule,
     MenubarModule,
     ToastModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ButtonModule,
@@ -24,6 +27,7 @@ import { MenubarModule } from 'primeng/menubar';
     InputTextModule,
     MenubarModule,
     ToastModule,
+    IdeaEditableComponent,
   ],
   providers: [
     MessageService
